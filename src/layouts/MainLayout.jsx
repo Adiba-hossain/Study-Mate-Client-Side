@@ -1,20 +1,16 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { Outlet } from "react-router";
 import Footer from "../components/Footer";
 
 const MainLayout = () => {
   return (
-    <div>
-      <nav>
-        <Navbar />
-      </nav>
-      <main>
+    <div className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
+      <Navbar />
+      <main className="flex-1">
         <Outlet />
       </main>
-      <footer className="mt-auto">
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 };

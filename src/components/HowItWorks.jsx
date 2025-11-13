@@ -1,43 +1,47 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { BookOpen, Users, Rocket } from "lucide-react";
 
 const steps = [
   {
-    icon: "🔍",
-    title: "Find Partners",
-    desc: "Search for study partners by subject, skill, or location to match your learning style.",
+    icon: <BookOpen size={40} />,
+    title: "1. Create Your Profile",
+    desc: "Sign up and tell us about your study preferences, subjects, and availability.",
   },
   {
-    icon: "📝",
-    title: "Create Profile",
-    desc: "Build your study partner profile with your subjects, availability, and expertise level.",
+    icon: <Users size={40} />,
+    title: "2. Find a Partner",
+    desc: "Browse through profiles and find your ideal study partner based on interests.",
   },
   {
-    icon: "🤝",
-    title: "Connect & Collaborate",
-    desc: "Send requests, connect with partners, and achieve academic goals together effectively.",
+    icon: <Rocket size={40} />,
+    title: "3. Start Learning Together",
+    desc: "Connect, collaborate, and reach your academic goals faster.",
   },
 ];
 
-export default function HowItWorks() {
-  return (
-    <section className="bg-gray-100 dark:bg-gray-800 py-12 px-4 rounded-xl">
-      <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-        How It Works
-      </h2>
-      <div className="grid md:grid-cols-3 gap-8 text-center">
-        {steps.map((step, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ scale: 1.05 }}
-            className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow"
-          >
-            <div className="text-4xl mb-4">{step.icon}</div>
-            <h3 className="font-semibold mb-2">{step.title}</h3>
-            <p>{step.desc}</p>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
-}
+const HowItWorks = () => (
+  <motion.section
+    className="py-12 bg-gray-50 dark:bg-gray-900 text-center"
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    transition={{ duration: 0.5 }}
+  >
+    <h2 className="text-3xl font-bold mb-8">How It Works</h2>
+    <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+      {steps.map((s, idx) => (
+        <motion.div
+          key={idx}
+          className="bg-white dark:bg-gray-800 p-6 rounded shadow hover:shadow-lg transition flex flex-col items-center"
+          whileHover={{ scale: 1.05 }}
+        >
+          <div className="text-indigo-600 mb-4">{s.icon}</div>
+          <h3 className="font-semibold text-lg mb-2">{s.title}</h3>
+          <p className="text-gray-600 dark:text-gray-300">{s.desc}</p>
+        </motion.div>
+      ))}
+    </div>
+  </motion.section>
+);
+
+export default HowItWorks;
